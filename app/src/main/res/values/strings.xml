@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">LotRQuotebook</string>
     <string name="api_key">784VvRr2bY1RZUtGc75T</string>
+    <string name="hint_edit_text">Enter a character name here</string>
+    <string name="action_get_quote">Get his quote</string>
+    <string name="label_character_name">Name: %1$s</string>
+    <string name="label_character_gender">Gender: %1$s</string>
+    <string name="label_character_race">Race: %1$s</string>
+    <string name="label_character_realm">Realm: %1$s</string>
+    <string name="value_unknown">Unknown</string>
 </resources>
