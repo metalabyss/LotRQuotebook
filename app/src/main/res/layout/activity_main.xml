@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:autofillHints=""
         android:hint="@string/hint_edit_text"
-        android:inputType="text"
+        android:inputType="textCapWords"
         android:textSize="22sp" />
 
     <ScrollView
