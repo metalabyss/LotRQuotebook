@@ -48,16 +48,19 @@ class MainActivity : AppCompatActivity() {
                         String.format(getString(R.string.label_character_name), it.name)
 
                     val gender =
-                        if (it.gender.isBlank()) getString(R.string.value_unknown) else getString(R.string.label_character_gender)
-                    characterGenderTextView.text = String.format(gender, it.gender)
+                        if (it.gender.isBlank()) getString(R.string.value_unknown) else it.gender
+                    characterGenderTextView.text =
+                        String.format(getString(R.string.label_character_gender), gender)
 
                     val race =
-                        if (it.race.isBlank()) getString(R.string.value_unknown) else getString(R.string.label_character_race)
-                    characterRaceTextView.text = String.format(race, it.race)
+                        if (it.race.isBlank()) getString(R.string.value_unknown) else it.race
+                    characterRaceTextView.text =
+                        String.format(getString(R.string.label_character_race), race)
 
                     val realm =
-                        if (it.realm.isBlank()) getString(R.string.value_unknown) else getString(R.string.label_character_realm)
-                    characterRealmTextView.text = String.format(realm, it.realm)
+                        if (it.realm.isBlank()) getString(R.string.value_unknown) else it.realm
+                    characterRealmTextView.text =
+                        String.format(getString(R.string.label_character_realm), realm)
                 }
             }
         )
