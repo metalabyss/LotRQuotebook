@@ -16,19 +16,19 @@
         android:autofillHints=""
         android:hint="@string/hint_edit_text"
         android:inputType="textCapWords"
-        android:textSize="22sp" />
+        android:textSize="@dimen/et_character_search_text_size" />
 
     <ProgressBar
         android:id="@+id/pb_loading_indicator"
-        android:layout_width="42dp"
-        android:layout_height="42dp"
+        android:layout_width="@dimen/pb_layout_size"
+        android:layout_height="@dimen/pb_layout_size"
         android:layout_gravity="center"
         android:visibility="gone" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="@dimen/scroll_view_top_margin">
 
         <LinearLayout
             android:id="@+id/layout_character_info"
@@ -37,38 +37,38 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="start"
-            android:paddingHorizontal="8dp">
+            android:paddingHorizontal="@dimen/character_layout_padding">
 
             <TextView
                 android:id="@+id/text_character_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="22sp" />
+                android:textSize="@dimen/tv_character_prop_text_size" />
 
             <TextView
                 android:id="@+id/text_character_gender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="22sp" />
+                android:textSize="@dimen/tv_character_prop_text_size" />
 
             <TextView
                 android:id="@+id/text_character_race"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="22sp" />
+                android:textSize="@dimen/tv_character_prop_text_size" />
 
             <TextView
                 android:id="@+id/text_character_realm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="22sp" />
+                android:textSize="@dimen/tv_character_prop_text_size" />
 
             <Button
                 android:id="@+id/btn_get_quote"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/action_get_quote"
-                android:layout_marginTop="16dp"/>
+                android:layout_marginTop="@dimen/btn_quote_top_margin"/>
         </LinearLayout>
     </ScrollView>
 
