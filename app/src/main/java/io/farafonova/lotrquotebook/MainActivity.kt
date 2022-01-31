@@ -7,9 +7,9 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
 
 class MainActivity : AppCompatActivity() {
     private val viewModel: CharacterViewModel by viewModels {
@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var characterGenderTextView: TextView
     private lateinit var characterRaceTextView: TextView
     private lateinit var characterRealmTextView: TextView
+    private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,10 +33,12 @@ class MainActivity : AppCompatActivity() {
         characterGenderTextView = findViewById(R.id.text_character_gender)
         characterRaceTextView = findViewById(R.id.text_character_race)
         characterRealmTextView = findViewById(R.id.text_character_realm)
+        progressBar = findViewById(R.id.pb_loading_indicator)
 
         viewModel.character.observe(
             this,
             {
+                progressBar.visibility = View.GONE
                 if (it != null) {
                     if (characterLayout.visibility != View.VISIBLE) {
                         characterLayout.visibility = View.VISIBLE
@@ -70,6 +73,8 @@ class MainActivity : AppCompatActivity() {
         val menuItemThatWasSelected: Int = item.itemId
         if (menuItemThatWasSelected == R.id.action_search_character) {
             viewModel.findCharacter(searchBox.text.toString())
+            characterLayout.visibility = View.GONE
+            progressBar.visibility = View.VISIBLE
         }
         return super.onOptionsItemSelected(item)
     }
