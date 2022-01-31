@@ -4,13 +4,12 @@ import android.util.Log
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
 
-class CharacterRepository {
-    private val BASE_URL = QuotebookApplication.getContext().resources.getString(R.string.base_url)
-    private val AUTH_HEADER = "Bearer ${QuotebookApplication.getContext().resources.getString(R.string.api_key)}"
+class CharacterRepository(baseUrl: String, apiKey: String) {
+    private val authHeader = "Bearer $apiKey"
     private val TAG = CharacterRepository::class.qualifiedName
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl(BASE_URL)
+        .baseUrl(baseUrl)
         .addConverterFactory(JacksonConverterFactory.create())
         .build()
 
@@ -18,7 +17,7 @@ class CharacterRepository {
 
     suspend fun getCharacterByName(characterName: String): Character? {
 
-        val response = characterService.findCharacters("application/json", AUTH_HEADER, characterName)
+        val response = characterService.findCharacters("application/json", authHeader, characterName)
 
         var character: Character? = null
 

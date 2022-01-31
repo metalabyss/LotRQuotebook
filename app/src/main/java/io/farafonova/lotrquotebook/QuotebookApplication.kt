@@ -1,20 +1,10 @@
 package io.farafonova.lotrquotebook
 
 import android.app.Application
-import android.content.Context
 
 class QuotebookApplication: Application() {
-    val repository by lazy { CharacterRepository() }
+    private val apiKey by lazy { applicationContext.getString(R.string.api_key) }
+    private val baseUrl by lazy { applicationContext.getString(R.string.base_url) }
 
-    companion object {
-        private lateinit var context: Context
-        fun getContext() : Context {
-            return context
-        }
-    }
-
-    override fun onCreate() {
-        super.onCreate()
-        context = this
-    }
+    val repository by lazy { CharacterRepository(baseUrl, apiKey) }
 }
