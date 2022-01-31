@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var characterRaceTextView: TextView
     private lateinit var characterRealmTextView: TextView
     private lateinit var progressBar: ProgressBar
+    private lateinit var errorTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         characterRaceTextView = findViewById(R.id.text_character_race)
         characterRealmTextView = findViewById(R.id.text_character_realm)
         progressBar = findViewById(R.id.pb_loading_indicator)
+        errorTextView = findViewById(R.id.tv_error)
 
         viewModel.character.observe(
             this,
@@ -64,6 +66,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         )
+
+        viewModel.errorMessage.observe(this, {
+            if (it.isNotBlank()) {
+                progressBar.visibility = View.GONE
+                errorTextView.text = it
+                errorTextView.visibility = View.VISIBLE
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -76,6 +86,7 @@ class MainActivity : AppCompatActivity() {
         val menuItemThatWasSelected: Int = item.itemId
         if (menuItemThatWasSelected == R.id.action_search_character) {
             viewModel.findCharacter(searchBox.text.toString())
+            errorTextView.visibility = View.GONE
             characterLayout.visibility = View.GONE
             progressBar.visibility = View.VISIBLE
         }
